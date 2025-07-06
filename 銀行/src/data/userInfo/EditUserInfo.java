@@ -8,8 +8,7 @@ import data.DBConnection;
 import data.credentials.UserAuthenticator;
 
 public class EditUserInfo {
-	public static boolean edit() {
-		try(Scanner sc = new Scanner(System.in)){
+	public static boolean edit(Scanner sc) {
 			
 			UserAuthenticator auth = new UserAuthenticator(sc);
 			String cardnumber = auth.authenticate();
@@ -22,6 +21,7 @@ public class EditUserInfo {
 			System.out.println("1. メールアドレス");
 			System.out.println("2. 暗証番号");
 			System.out.println("3. 名前");
+			System.out.println("esc 終了");
 			String option = sc.nextLine();
 			
 			String newValue = null;
@@ -89,7 +89,6 @@ public class EditUserInfo {
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
-			}
 			}
 		return false;
 		}

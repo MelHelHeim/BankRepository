@@ -6,17 +6,10 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 import data.DBConnection;
-import data.credentials.UserAuthenticator;
 
 public class Deposit {
-	public static boolean deposit() {
-		try(Scanner sc = new Scanner(System.in)){
+	public static boolean deposit(String cardnumber, Scanner sc) {
 			
-			UserAuthenticator auth = new UserAuthenticator(sc);
-			String cardnumber = auth.authenticate();
-			if(cardnumber == null) {
-				return false;
-			}
 			System.out.println("入金する金額を入力してください");
 			String input = sc.nextLine();
 			
@@ -62,10 +55,6 @@ public class Deposit {
 				e.printStackTrace();
 				return false;
 			}
-		}catch(Exception e) {
-			e.printStackTrace();
-			return false;
-		}
 		return false;
 	}
 }

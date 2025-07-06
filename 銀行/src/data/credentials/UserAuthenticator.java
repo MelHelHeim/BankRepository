@@ -84,19 +84,19 @@ public class UserAuthenticator {
 			
 			switch(choice) {
 			case "1":
-				Deposit.deposit();
+				Deposit.deposit(cardnumber, sc);
 				break;
 				
 			case "2":
-				Withdraw.withdraw();
+				Withdraw.withdraw(cardnumber, sc);
 				break;
 				
 			case "3":
-				EditUserInfo.edit();
+				EditUserInfo.edit(sc);
 				break;
 				
 			case "4":
-				boolean deleted = DeleteUser.delete();
+				boolean deleted = DeleteUser.delete(sc);
 				if(deleted) {
 					System.out.println("アカウントが削除されました");
 					return;

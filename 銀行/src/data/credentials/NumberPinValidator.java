@@ -8,7 +8,7 @@ import data.DBConnection;
 
 public class NumberPinValidator {
 	public static boolean Credentials(String cardnumber, String pin) {
-		String sql = ("SELECT COUNT(*) FROM USERS WHERE card_number = ? AND pin = ?");
+		String sql = ("SELECT COUNT(*) FROM USERS WHERE cardnumber = ? AND pin = ?");
 		try(Connection con = DBConnection.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql)){
 			

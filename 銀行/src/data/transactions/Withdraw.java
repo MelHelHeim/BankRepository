@@ -6,16 +6,9 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 
 import data.DBConnection;
-import data.credentials.UserAuthenticator;
 
 public class Withdraw {
-	public static boolean withdraw() {
-		try(Scanner sc = new Scanner(System.in)){
-			UserAuthenticator auth = new UserAuthenticator(sc);
-			String cardnumber = auth.authenticate();
-			if(cardnumber == null) {
-				return false;
-			}
+	public static boolean withdraw(String cardnumber, Scanner sc) {
 			
 		System.out.println("引き出す金額を数字のみで入力してください");
 		System.out.println("全額の際は\"全額\"と記載してください");
@@ -75,7 +68,6 @@ public class Withdraw {
 			return false;
 		}
 		}
-	}
 	public static boolean withdrawAll(String cardnumber) {
 		String selectSql = "SELECT balance FROM users WHERE cardnumber = ?";
 		String updateSql = "UPDATE users SET balance = ? WHERE cardnumber = ?";

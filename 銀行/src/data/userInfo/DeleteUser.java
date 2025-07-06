@@ -9,8 +9,7 @@ import data.credentials.UserAuthenticator;
 import data.transactions.Withdraw;
 
 public class DeleteUser {
-	public static boolean delete() {
-		try(Scanner sc = new Scanner(System.in)){
+	public static boolean delete(Scanner sc) {
 		
 		UserAuthenticator auth = new UserAuthenticator(sc);
 		String cardnumber = auth.authenticate();
@@ -23,6 +22,8 @@ public class DeleteUser {
 		int rng = (int)(Math.random() * 900000) + 100000;
 		String rngcode = String.valueOf(rng);
 		//send code to email of account
+		//temp code
+		System.out.println("メールに届くはずのコード: "+rngcode);
 		
 		String inputcode = sc.nextLine();		
 		if(!inputcode.equals(rngcode)) {
@@ -50,9 +51,6 @@ public class DeleteUser {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-	}catch (Exception e) {
-		e.printStackTrace();
 		}
 		return false;
 	}
